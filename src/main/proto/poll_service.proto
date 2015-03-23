@@ -1,0 +1,36 @@
+//
+//This service is written to perform functionalities related to Polling application
+//
+//@author: Neha Wani
+//@ref: SJSU CMPE273 Lab2 assignment (Prof. Sithu Aung)
+//@date: 18th March, 2015
+//
+
+syntax = "proto3";
+
+package edu.sjsu.cmpe273.lab2;
+
+option java_multiple_files = true;
+option java_package = "edu.sjsu.cmpe273.lab2";
+option java_outer_classname = "PollServiceProto";
+
+// The poll service definition.
+service PollService {
+
+// Creates a poll
+ rpc CreatePoll (PollRequest) returns (PollResponse) {}
+}
+
+// The request message with poll information
+message PollRequest {
+ string moderatorId = 1;
+ string question = 2;
+ string startedAt = 3;
+ string expiredAt = 4;
+ repeated string choice = 5;
+}
+
+// The response message containing the new poll id
+message PollResponse {
+ string id = 1;
+}
